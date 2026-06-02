@@ -109,4 +109,8 @@ export class User {
 
     return new User(idVO, nameVO, passwordVO, emailVO);
   }
+
+  public equals(other: User): boolean {
+    return this.id.equals(other.id);
+  }
 }
