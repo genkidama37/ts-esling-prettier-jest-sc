@@ -1,5 +1,6 @@
 import { test, expect } from '@jest/globals';
-import { Email, Password, User } from '../domain/user';
+import { User } from '../domain/entities';
+import { Password, Email } from '../domain/value-objects';
 
 const validEmail = 'hola@ejemplo.com';
 const invalidEmail = 'holaejemplo.com';
