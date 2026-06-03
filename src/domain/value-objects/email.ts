@@ -1,3 +1,5 @@
+import { ValidationError } from '../types/errors';
+
 export class Email {
   constructor(public value: string) {
     this.value = value;
@@ -6,7 +8,7 @@ export class Email {
   public static create(value: string): Email {
     // Validaciones aqui
     if (!this.isValid(value)) {
-      throw new Error('Invalid email');
+      throw new ValidationError('Invalid email');
     }
     return new Email(value);
   }

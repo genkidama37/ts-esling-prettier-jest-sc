@@ -1,3 +1,4 @@
+import { ValidationError } from '../types/errors';
 import { Password, Id, Email } from '../value-objects';
 
 export class User {
@@ -13,7 +14,7 @@ export class User {
     const idVO = new Id(id);
     const emailVO = Email.create(email);
     if (name.trim().length === 0) {
-      throw new Error('Invalid name');
+      throw new ValidationError('Invalid name');
     }
 
     return new User(idVO, name, passwordVO, emailVO);
