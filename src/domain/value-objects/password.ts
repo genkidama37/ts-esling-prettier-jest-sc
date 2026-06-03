@@ -1,20 +1,16 @@
 import { ValidationError } from '../types/errors';
+import { ValueObject } from './value-object';
 
-export class Password {
-  constructor(public value: string) {
-    this.value = value;
+export class Password extends ValueObject<string> {
+  constructor(value: string) {
+    super(value);
   }
 
   public static create(value: string): Password {
-    // Validaciones aqui
     if (!this.isValid(value)) {
       throw new ValidationError('Invalid password');
     }
     return new Password(value);
-  }
-
-  public equals(other: Password): boolean {
-    return this.value === other.value;
   }
 
   private static isValid(value: string): boolean {

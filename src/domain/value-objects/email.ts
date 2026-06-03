@@ -1,20 +1,16 @@
 import { ValidationError } from '../types/errors';
+import { ValueObject } from './value-object';
 
-export class Email {
-  constructor(public value: string) {
-    this.value = value;
+export class Email extends ValueObject<string> {
+  constructor(value: string) {
+    super(value);
   }
 
   public static create(value: string): Email {
-    // Validaciones aqui
     if (!this.isValid(value)) {
       throw new ValidationError('Invalid email');
     }
     return new Email(value);
-  }
-
-  public equals(other: Email): boolean {
-    return this.value === other.value;
   }
 
   private static isValid(value: string): boolean {
